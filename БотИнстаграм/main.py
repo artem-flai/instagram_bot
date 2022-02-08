@@ -9,6 +9,11 @@ import random
 
 
 def hashtag_search(username, password, hash_tag):
+    ''' It accepts login, password, and hashtag.
+        A virtual Chrome browser is used.
+        Log in to the site and search by hashtag.
+        Get links to hashtag uploaded posts and like them. '''
+    
     service = Service(executable_path='chromedriver.exe')
     browser = webdriver.Chrome(service=service)
     try:
@@ -32,6 +37,7 @@ def hashtag_search(username, password, hash_tag):
             time.sleep(14)
 
             for i in range(0, 8):
+                # "i" is number of page scrolls.
                 browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(random.randrange(15))
             time.sleep(1000)
@@ -45,12 +51,12 @@ def hashtag_search(username, password, hash_tag):
             #         posts_urls.append(href)
             #         print(href)
 
-            for url in posts_urls[0:4]:
+            for url in posts_urls:
                 try:
                     browser.get(url)
                     browser.find_element(by=By.XPATH,
                                          value="/html/body/div[1]/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[1]/span[1]/button").click()
-                    time.sleep(random.randrange(5, 7))
+                    time.sleep(random.randrange(100, 120))
                 except Exception as ex:
                     print(ex)
 
