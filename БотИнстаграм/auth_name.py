@@ -1,2 +1,2 @@
-username = 'karandyshik@mail.ru'
-password = '123456qwertyI'
+username = 'your_username'
+password = 'your_password'
